@@ -23,7 +23,7 @@ public class User {
     private String userEmail;
     private String userPassword;
 
-    @OneToMany
-    private Set<Category> categories;
+//    @OneToMany
+//    private Set<Category> categories;
 
 }

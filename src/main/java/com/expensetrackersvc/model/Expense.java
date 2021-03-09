@@ -22,11 +22,9 @@ public class Expense {
     private String descript;
     private int expenseAmount;
     private Instant expenseDate;
-    @ManyToOne
-    private User user;
 
-    @ManyToOne
-    private Category category;
+//    @ManyToOne
+//    private Category category;
 
 
 }
