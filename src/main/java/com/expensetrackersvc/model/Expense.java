@@ -1,6 +1,7 @@
 package com.expensetrackersvc.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,12 @@ public class Expense {
     private int expenseAmount;
     private Instant expenseDate;
 
-//    @ManyToOne
-//    private Category category;
+    @ManyToOne
+    private Category category;
+
+    @JsonIgnore
+    @ManyToOne
+    private User user;
 
 
 }
