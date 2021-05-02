@@ -1,9 +1,8 @@
-package com.expensetrackersvc.rest;
+package com.expensetrackersvc.controller.api;
 
 import com.expensetrackersvc.model.Expense;
 import com.expensetrackersvc.repository.ExpenseRepository;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

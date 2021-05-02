@@ -1,8 +1,11 @@
-package com.expensetrackersvc.rest;
+package com.expensetrackersvc.controller.api;
 
+import com.expensetrackersvc.controller.request.UserSignupRequest;
 import com.expensetrackersvc.model.User;
 import com.expensetrackersvc.repository.UserRepository;
-import com.expensetrackersvc.service.UserService;
+import com.expensetrackersvc.service.UserServiceImpl;
+import dto.response.Response;
+import dto.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
@@ -10,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/user")
@@ -22,7 +22,7 @@ public class UserController {
     UserRepository userRepository;
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @GetMapping("allUsers")
     public ResponseEntity<List<User>> getUser() {
@@ -37,13 +37,23 @@ public class UserController {
 
           return "Found the data ";
     }
-    @PostMapping("/createUser")
-    public ResponseEntity<User> addUser(@Valid @RequestBody User user) throws URISyntaxException {
-       User result=userService.addUser(user);
-        return ResponseEntity.created(new URI("/v1/user/" + result.getUserId() + result.getUserId())).body(result);
+    @PostMapping("/signup")
+    public Response signup(@Valid @RequestBody UserSignupRequest userSignupRequest) {
+
+      return Response.ok().setPayload(registerUser(userSignupRequest,false));
 
     }
 
+    private UserDto registerUser(UserSignupRequest userSignupRequest, boolean isAdmin){
+        UserDto userDto=new UserDto();
+        userDto.setEmail(userSignupRequest.getEmail());
+        userDto.setFirstName(userSignupRequest.getFirstName());
+        userDto.setLastName(userSignupRequest.getLastName());
+        userDto.setPassword(userSignupRequest.getPassword());
+        userDto.setMobileNumber(userSignupRequest.getMobileNumber());
+           userService.
+
+    }
 
 
 }

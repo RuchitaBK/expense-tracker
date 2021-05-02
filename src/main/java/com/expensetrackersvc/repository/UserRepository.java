@@ -8,14 +8,15 @@ import org.springframework.data.repository.query.Param;
 //
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User,Long>{
 
+    User findByEmail(String email);
 
-//    @Query("select user from User u where u.userEmail = ?1 and u.userPassword =?2")
-    public List<User> findByUserEmailAndUserPassword(String userEmail,String userPassword);
-
-//    @Query(value = "select user from User user where user.useremail =:userEmail AND user.userpassword = :userPassword")
-//    public List<User> findByUserEmailIdAndUserPassword(@Param("userEmail") String userEmail, @Param("userPassword") String userPassword );
-
+////    @Query("select user from User u where u.userEmail = ?1 and u.userPassword =?2")
+//    public List<User> findByUserEmailAndUserPassword(String userEmail,String userPassword);
+//
+////    @Query(value = "select user from User user where user.useremail =:userEmail AND user.userpassword = :userPassword")
+////    public List<User> findByUserEmailIdAndUserPassword(@Param("userEmail") String userEmail, @Param("userPassword") String userPassword );
+//
 
 }
