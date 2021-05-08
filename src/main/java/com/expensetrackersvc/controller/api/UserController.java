@@ -24,19 +24,19 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    @GetMapping("allUsers")
-    public ResponseEntity<List<User>> getUser() {
-        List<User> userList = (List<User>) userRepository.findAll();
-        return ResponseEntity.ok(userList);
-    }
-    @GetMapping("/search")
-    public String searchByIDPassword(@Param("userEmail") String userEmail, @Param("userPassword") @NotBlank  @Size(min = 3) String userPassword){
-//          List<User> userList= userRepository.findByUserEmailIdAndUserPassword(userEmail,userPassword);
-          List<User> userList=userRepository.findByUserEmailAndUserPassword(userEmail,userPassword);
-          if(userList.size()==0)  return "No record Found";
-
-          return "Found the data ";
-    }
+//    @GetMapping("allUsers")
+//    public ResponseEntity<List<User>> getUser() {
+//        List<User> userList = (List<User>) userRepository.findAll();
+//        return ResponseEntity.ok(userList);
+//    }
+//    @GetMapping("/search")
+//    public String searchByIDPassword(@Param("userEmail") String userEmail, @Param("userPassword") @NotBlank  @Size(min = 3) String userPassword){
+////          List<User> userList= userRepository.findByUserEmailIdAndUserPassword(userEmail,userPassword);
+//          List<User> userList=userRepository.findByUserEmailAndUserPassword(userEmail,userPassword);
+//          if(userList.size()==0)  return "No record Found";
+//
+//          return "Found the data ";
+//    }
     @PostMapping("/signup")
     public Response signup(@Valid @RequestBody UserSignupRequest userSignupRequest) {
 
@@ -51,7 +51,7 @@ public class UserController {
         userDto.setLastName(userSignupRequest.getLastName());
         userDto.setPassword(userSignupRequest.getPassword());
         userDto.setMobileNumber(userSignupRequest.getMobileNumber());
-           userService.
+          return userService.registration(userDto);
 
     }
 

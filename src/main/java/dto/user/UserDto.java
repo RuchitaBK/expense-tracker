@@ -23,4 +23,12 @@ public class UserDto {
     private String password;
     private String mobileNumber;
    Collection<RoleDto> roles;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }
