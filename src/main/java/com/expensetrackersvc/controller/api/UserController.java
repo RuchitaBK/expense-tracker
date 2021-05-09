@@ -51,6 +51,8 @@ public class UserController {
         userDto.setLastName(userSignupRequest.getLastName());
         userDto.setPassword(userSignupRequest.getPassword());
         userDto.setMobileNumber(userSignupRequest.getMobileNumber());
+        userDto.setAdmin(isAdmin);
+
           return userService.registration(userDto);
 
     }

@@ -3,6 +3,7 @@ package dto.mapper;
 import com.expensetrackersvc.model.User;
 import dto.user.RoleDto;
 import dto.user.UserDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -17,8 +18,7 @@ public class UserMapper {
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
                 .setMobileNumber(user.getMobileNumber())
-                .setRoles(new HashSet<RoleDto>(user
-                        .getRoles()
+                .setRoles(new HashSet<RoleDto>(user.getRoles()
                         .stream()
                         .map(role -> new ModelMapper().map(role, RoleDto.class))
                         .collect(Collectors.toSet())));
