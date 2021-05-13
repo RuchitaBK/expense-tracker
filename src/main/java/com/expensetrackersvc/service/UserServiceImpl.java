@@ -34,21 +34,19 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepository.findByEmail(userDto.getEmail());
         if (user == null) {
-            userRole = roleRepository.findByRole(UserRoles.PASSENGER);
-            System.out.println("User Role : "+userRole);
+            userRole = roleRepository.findByRole(UserRoles.CUSTOMER);
             user = new User();
-
             user.setEmail(userDto.getEmail());
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
             user.setMobileNumber(userDto.getMobileNumber());
+            user.setPassword(userDto.getPassword());
             user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 
             return UserMapper.toUserDto(userRepository.save(user));
 
         }
         throw exception(USER, DUPLICATE_ENTITY, userDto.getEmail());
-
 
     }
     /**
